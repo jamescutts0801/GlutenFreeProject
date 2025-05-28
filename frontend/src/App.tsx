@@ -5,19 +5,13 @@ import axios from 'axios';
 
 const App: React.FC = () => {
   const [name, setName] = useState('')
-  const [error, setError] = useState(false)
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
   }
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (!name.trim()) {
-      setError(true)
-    } else {
-      setError(false)
-    }
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
 
     await axios({
       method: "post",
@@ -38,7 +32,6 @@ const App: React.FC = () => {
           label="Recipe name: "
           value={name}
           name="recipeName"
-          error={error}
           onChange={handleNameChange}
           placeholder="Please enter your recipe's name"
         />

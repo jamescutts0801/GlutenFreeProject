@@ -6,7 +6,6 @@ interface InputProps {
   value: string | number
   name: string
   placeholder: string
-  error: boolean
   disabled?: boolean
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
@@ -17,7 +16,6 @@ const TextField: FC<InputProps> = ({
   value,
   name,
   placeholder,
-  error,
   disabled,
   onChange,
 }) => {
@@ -33,7 +31,6 @@ const TextField: FC<InputProps> = ({
         onChange={onChange}
         disabled={disabled}
       />
-      {error && <p className="error">Input filed can't be empty!</p>}
     </div>
   )
 }
