@@ -19,7 +19,14 @@ const App: React.FC = () => {
       setError(false)
     }
 
-    await axios.post("http://localhost:8080/upload-recipe", name)
+    await axios({
+      method: "post",
+      url: "http://localhost:8080/upload-recipe",
+      data: name,
+      headers: {
+        Accept: "application/json ,text/plain, */*"
+      },
+    });
   }
 
   return (
