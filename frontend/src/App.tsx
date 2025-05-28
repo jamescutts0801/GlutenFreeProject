@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import './App.css';
 import TextField from './components/TextField';
+import axios from 'axios';
 
 const App: React.FC = () => {
   const [name, setName] = useState('')
@@ -10,13 +11,15 @@ const App: React.FC = () => {
     setName(e.target.value)
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!name.trim()) {
       setError(true)
     } else {
       setError(false)
     }
+
+    await axios.post("http://localhost:8080/upload-recipe", name)
   }
 
   return (
