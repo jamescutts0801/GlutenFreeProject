@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import TextField from './components/TextField';
 
 const App = () => {
 
@@ -8,12 +9,9 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="App-intro">
-          <h2>JUG List</h2>
-        </div>
-      </header>
+    <div>  
+      <TextField></TextField>
+      <TextField></TextField>
     </div>
   );
 }
