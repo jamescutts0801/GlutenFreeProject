@@ -18,7 +18,7 @@ const App: React.FC = () => {
       url: "http://localhost:8080/upload-recipe",
       data: name,
       headers: {
-        Accept: "application/json ,text/plain, */*"
+        'Content-Type': 'text/plain'
       },
     });
   }
