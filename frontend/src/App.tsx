@@ -1,19 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import './App.css';
 import TextField from './components/TextField';
 
-const App = () => {
+const App: React.FC = () => {
+  const [name, setName] = useState('')
+  const [error, setError] = useState(false)
 
-  useEffect(() => {
-    fetch('/upload-recipe/success')
-  }, []);
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value)
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!name.trim()) {
+      setError(true)
+    } else {
+      setError(false)
+    }
+  }
 
   return (
-    <div>  
-      <TextField></TextField>
-      <TextField></TextField>
+    <div className="page-center">
+      <form onSubmit={handleSubmit}>
+        <h3 className="form-title">Add a recipe</h3>
+        <TextField
+          type="text"
+          label="Recipe name: "
+          value={name}
+          name="recipeName"
+          error={error}
+          onChange={handleNameChange}
+          placeholder="Please enter your recipe's name"
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
