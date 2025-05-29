@@ -25,7 +25,7 @@ const App: React.FC = () => {
       url: "http://localhost:8080/upload-recipe",
       data: formData,
       headers: {
-        'Content-Type': 'text/plain'
+        'Content-Type': 'application/json'
       },
     });
   }
