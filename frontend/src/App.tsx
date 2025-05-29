@@ -6,7 +6,7 @@ import axios from 'axios';
 const App: React.FC = () => {
   const [formData, setFormData] = useState({
     recipeName: "",
-    recipeInstructions: ""
+    recipeMethod: ""
   })
 
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
@@ -45,11 +45,11 @@ const App: React.FC = () => {
         <br/>
         <TextField
           type="text"
-          label="Recipe Instructions: "
-          value={formData.recipeInstructions}
-          name="recipeInstructions"
+          label="Recipe Method: "
+          value={formData.recipeMethod}
+          name="recipeMethod"
           onChange={handleInputChange}
-          placeholder="Please enter the instructions for your recipe"
+          placeholder="Please enter the method for your recipe"
         />
         <button type="submit">Submit</button>
       </form>

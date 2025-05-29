@@ -13,7 +13,7 @@ public class Recipe {
     @GeneratedValue
     private Long id;
     private String recipeName;
-    private String recipeInstructions;
+    private String recipeMethod;
 
     public String getRecipeName() {
         return recipeName;
@@ -23,11 +23,11 @@ public class Recipe {
         this.recipeName = recipeName;
     }
 
-    public String getRecipeInstructions() {
-        return recipeInstructions;
+    public String getRecipeMethod() {
+        return recipeMethod;
     }
 
-    public void setRecipeInstructions(String recipeInstructions) {
-        this.recipeInstructions = recipeInstructions;
+    public void setRecipeMethod(String recipeMethod) {
+        this.recipeMethod = recipeMethod;
     }
 }
