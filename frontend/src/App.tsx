@@ -4,10 +4,17 @@ import TextField from './components/TextField';
 import axios from 'axios';
 
 const App: React.FC = () => {
-  const [name, setName] = useState('')
+  const [formData, setFormData] = useState({
+    recipeName: "",
+    recipeInstructions: ""
+  })
 
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value)
+  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -16,7 +23,7 @@ const App: React.FC = () => {
     await axios({
       method: "post",
       url: "http://localhost:8080/upload-recipe",
-      data: name,
+      data: formData,
       headers: {
         'Content-Type': 'text/plain'
       },
@@ -30,10 +37,19 @@ const App: React.FC = () => {
         <TextField
           type="text"
           label="Recipe name: "
-          value={name}
+          value={formData.recipeName}
           name="recipeName"
-          onChange={handleNameChange}
+          onChange={handleInputChange}
           placeholder="Please enter your recipe's name"
+        />
+        <br/>
+        <TextField
+          type="text"
+          label="Recipe Instructions: "
+          value={formData.recipeInstructions}
+          name="recipeInstructions"
+          onChange={handleInputChange}
+          placeholder="Please enter the instructions for your recipe"
         />
         <button type="submit">Submit</button>
       </form>
