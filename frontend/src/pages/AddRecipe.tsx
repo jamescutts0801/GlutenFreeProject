@@ -2,12 +2,15 @@ import React, { FormEvent, useState } from 'react'
 import '../App.css';
 import TextField from '../components/TextField';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddRecipe: React.FC = () => {
   const [formData, setFormData] = useState({
     recipeName: "",
     recipeMethod: ""
-  })
+  });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
@@ -15,9 +18,9 @@ const AddRecipe: React.FC = () => {
       ...prevFormData,
       [name]: value,
     }));
-  }
+  };
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(this: any, e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     await axios({
@@ -28,7 +31,9 @@ const AddRecipe: React.FC = () => {
         'Content-Type': 'application/json'
       },
     });
-  }
+
+    navigate('/');
+  };
 
   return (
     <div className="page-center">
@@ -55,6 +60,6 @@ const AddRecipe: React.FC = () => {
       </form>
     </div>
   )
-}
+};
 
 export default AddRecipe
