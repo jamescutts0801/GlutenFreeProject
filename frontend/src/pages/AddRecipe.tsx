@@ -5,12 +5,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const AddRecipe: React.FC = () => {
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     recipeName: "",
     recipeMethod: ""
   });
-
-  const navigate = useNavigate();
 
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
@@ -20,7 +20,7 @@ const AddRecipe: React.FC = () => {
     }));
   };
 
-  async function handleSubmit(this: any, e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     await axios({
