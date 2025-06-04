@@ -1,0 +1,1 @@
+This project is currently in a pre-beta release. It combines React and Spring Boot to build a web application designed for my partner and me to easily save and organize recipes. The motivation behind developing it was the lack of existing solutions that effectively consider allergens, a crucial feature for our needs.
